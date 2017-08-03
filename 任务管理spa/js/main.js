@@ -1,6 +1,7 @@
 var Data = {
 	newname: "",
 	edit : "",
+	oldname:"",
 	list: [{
 			name: "asdfasd",
 			del: false
@@ -14,7 +15,7 @@ var Data = {
 
 var vm = new Vue({
 	el: "#app",
-	data: Data,
+	data:Data,
 	methods: {
 		tianjia() {
 			this.list.push({
@@ -30,7 +31,14 @@ var vm = new Vue({
 		},
 		xiugai(v){
 			this.edit = v;
-			console.log(135)
+			this.name = v.name;
+		},
+		quding(){
+			this.edit = ""
+		},
+		quxiao(v){
+			v.name = this.name;
+			this.edit = ""
 		}
 
 	}

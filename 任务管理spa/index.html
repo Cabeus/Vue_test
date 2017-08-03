@@ -13,12 +13,12 @@
 				<h2>添加任务</h2>
 				<input type="" v-on:keyup.enter="tianjia" v-model="newname" />
 				<div>
-					<span>{{list.length}}个任务未完成</span>
-					<ul>
-						<li>所有任务</li>
-						<li>未完成任务</li>
-						<li>完成的任务</li>
-					</ul>
+					<span >{{}}个任务未完成</span>
+					<div>
+						<a href="all">所有任务</a>
+						<a href="no">未完成任务</a>
+						<a href="ok">完成的任务</a>
+					</div>
 				</div>
 				<h2>任务列表</h2>
 				<ul>
@@ -28,7 +28,7 @@
 							<span v-bind:class="{ del : v.del}" v-on:dblclick="xiugai(v)">{{v.name}}</span>
 							<button v-on:click="shanchu(v)">删除任务</button>
 						</div>
-						<input type="" class="display"/>
+						<input type="" class="display" v-model="v.name" @keyup.enter="quding" @blur="quding" @keyup.esc = "quxiao(v)"/>
 					</li>
 				</ul>
 
