@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+				.active{
+					background:red;
+					color: white; 
+				}
+				
+				.active2{
+					font-size: 50px; 
+				}
+				
+				.putong{
+					margin:100px;
+				}
+		</style>
+	</head>
+	<body>
+		
+		<div id="app" >
+			<input type="checkbox" v-model = "isActive" />
+						<input type="checkbox" v-model = "isActive2" />
+
+			<p :class = "{ active: isActive , active2: isActive2}" class = "putong">我是P标签</p>
+			
+		</div>
+		<script src = "vue.js"></script>
+		<script type="text/javascript">
+			
+			var isActive = true, isActive2 = true;
+			var vm = new Vue({
+				el: "#app",
+				data:{
+					isActive,
+					isActive2
+				}
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="app" >
+			
+			<button @click = "OnMouseClick">按钮</button>
+			<input type="text" @keyup.65 = "onA" />
+			
+		</div>
+		<script src = "vue.js"></script>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: "#app",
+				data:{
+					message: "Hello,Vue"
+				},
+				methods:{
+					OnMouseClick(){
+						console.log("我被点击了");
+					},
+					onA(){
+						console.log("我被按了");
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

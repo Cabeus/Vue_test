@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/lib/vue.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			li{
+				width:600px;
+				line-height: 30px;
+				display: flex;
+				flex-wrap: wrap;
+			}
+			li > span{
+				flex: 1;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<section id="app">
+
+			<ul>
+				<li>
+					<span>商品名称</span>
+					<span>品牌</span>
+					<span>价格</span>
+					<span>颜色</span>
+					<span>数量</span>
+					<span>总价</span>
+				</li>
+				<li v-for="x in list">
+					<span>{{x.name}}</span>
+					<span>{{x.pinpai}}</span>
+					<span>{{x.price}}</span>
+					<span>{{x.color}}</span>
+					<span>{{x.number}}</span>
+					<span>{{x.number * x.price}}</span>
+				</li>
+			</ul>
+
+		</section>
+
+		<script type="text/javascript">
+			var Data = {
+				list: [{
+					name: "小米5",
+					pinpai: "小米",
+					price: 1999,
+					color: "黑色",
+					number:2
+				}, {
+					name: "小米6",
+					pinpai: "小米",
+					price: 2999,
+					color: "白色",
+					number:1
+				}, {
+					name: "iphone6",
+					pinpai: "Apple",
+					price: 3999,
+					color: "金色",
+					number:1
+				}, {
+					name: "iphone7",
+					pinpai: "Apple",
+					price: 4999,
+					color: "金色",
+					number:1
+				}]
+			};
+
+			new Vue({
+				el: "#app",
+				data: Data
+			})
+		</script>
+	</body>
+
+</html>

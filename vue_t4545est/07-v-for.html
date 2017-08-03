@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+	</head>
+	<body>
+		
+		<div id="app" >
+			
+			<ul>
+				<li v-for = "(v , k, i) in listInfo" >
+					{{i + 1}} -- {{k}}:{{v.name}}--- {{k}}---{{v.number}}--{{k}}{{v.price}}
+				</li>
+			</ul>
+			
+		</div>
+		<script src = "vue.js"></script>
+		<script type="text/javascript">
+			
+			var demoData = {
+				listInfo:[
+					{
+						name: "袜子",
+						number: "5",
+						price: "¥5.0"
+					},{
+						name: "帽子",
+						number: "2",
+						price: "¥30.0"
+					},{
+						name: "裤子",
+						number: "1",
+						price: "¥500.0"
+					}
+				]
+			};
+			
+			var vm = new Vue({
+				el: "#app",
+				data:demoData
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+	</head>
+
+	<body>
+		<div class="view">
+			<section id="app">
+				<h2>添加任务</h2>
+				<input type="" v-on:keyup.enter="tianjia" v-model="newname" />
+				<div>
+					<span>{{list.length}}个任务未完成</span>
+					<ul>
+						<li>所有任务</li>
+						<li>未完成任务</li>
+						<li>完成的任务</li>
+					</ul>
+				</div>
+				<h2>任务列表</h2>
+				<ul>
+					<li v-for="v in list" v-bind:class="{show:edit === v}">
+						<div  class="nodisplay">
+							<input type="checkbox" v-model="v.del" />
+							<span v-bind:class="{ del : v.del}" v-on:dblclick="xiugai(v)">{{v.name}}</span>
+							<button v-on:click="shanchu(v)">删除任务</button>
+						</div>
+						<input type="" class="display"/>
+					</li>
+				</ul>
+
+			</section>
+		</div>
+
+		<script src="js/vue.js"></script>
+		<script src="js/main.js"></script>
+
+	</body>
+
+</html>

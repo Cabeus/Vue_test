@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/lib/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<section id="app">
+			<ul>
+				<li v-for="x in list">
+					名字：{{x.name}}
+					<br /> 数量：{{x.number}}
+					<br /> 价格：{{x.price}}
+				</li>
+			</ul>
+		</section>
+
+		<script type="text/javascript">
+			var Data = {
+				list: [{
+					name: "袜子",
+					number: "5",
+					price: "¥5.0"
+				}, {
+					name: "帽子",
+					number: "2",
+					price: "¥30.0"
+				}, {
+					name: "裤子",
+					number: "1",
+					price: "¥500.0"
+				}]
+			};
+
+			new Vue({
+				el: "#app",
+				data: Data
+			})
+		</script>
+
+	</body>
+
+</html>

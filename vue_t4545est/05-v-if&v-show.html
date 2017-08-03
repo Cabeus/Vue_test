@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="app" >
+			<input type="checkbox" v-model="active" />
+			<p v-show = "active">我是P标签</p>
+			
+			
+		</div>
+		<script src = "vue.js"></script>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: "#app",
+				data:{
+					active: true
+				}
+			});
+		</script>
+	</body>
+</html>

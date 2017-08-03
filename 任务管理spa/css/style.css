@@ -1,0 +1,76 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  list-style: none;
+}
+body {
+  background: black;
+}
+.view {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
+.view > #app {
+  margin: auto;
+  width: 1200px;
+  height: 900px;
+  background: #ffffff;
+  padding: 30px;
+}
+.view > #app > input {
+  width: 100%;
+  height: 30px;
+  border: 1px solid #000;
+}
+.view > #app > div {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+}
+.view > #app > div > span {
+  float: left;
+  color: #d9534f;
+  padding-left: 25px;
+}
+.view > #app > div > ul {
+  float: right;
+}
+.view > #app > div > ul li {
+  float: left;
+  margin-right: 25px;
+}
+.view > #app > ul > li {
+  padding: 0 25px;
+  background: #fcc;
+  height: 40px;
+  line-height: 40px;
+}
+.view > #app > ul > li:nth-child(2n+1) {
+  background: #ffc;
+}
+.view > #app > ul > li > input {
+  width: 100%;
+  height: 35px;
+  border: 1px solid black;
+  display: none;
+}
+.view > #app > ul > li > div > button {
+  width: 80px;
+  height: 35px;
+  background: #d9534f;
+  float: right;
+  border-radius: 5px;
+  color: #fff;
+}
+.view > #app > ul .show > .nodisplay {
+  display: none;
+}
+.view > #app > ul .show > .display {
+  display: block;
+}
+.del {
+  text-decoration: line-through;
+  color: #CCCCCC;
+}
