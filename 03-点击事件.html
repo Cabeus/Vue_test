@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/lib/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<button id="app" v-on:click="dianji">
+			dianji
+		</button>
+
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: "#app",
+				methods: {
+					dianji() {
+						console.log("dianji lasdjflaksdjf")
+					}
+				}
+			})
+		</script>
+	</body>
+
+</html>

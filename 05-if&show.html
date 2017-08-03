@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/lib/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+
+		<section id="app">
+			<p v-if="a">asdfa</p>
+			<p v-if="b">asdfa</p>
+			
+			<input type="checkbox" v-model="dian"/>
+			<p v-show="dian">asdfaadfasd</p>
+			
+		</section>
+
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: "#app",
+				data:{
+					a:true,
+					b:false,
+					dian:true
+				}
+			})
+		</script>
+	</body>
+
+</html>

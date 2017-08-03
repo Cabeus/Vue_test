@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/lib/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<div v-bind="{ id: someProp, 'other-attr': otherProp }">
+				
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			new Vue({
+				el:"#app",
+				data :{
+					someProp : "aaa",
+					otherProp : "bbb"
+				}
+			})
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/lib/vue.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.ss {
+				width: 100px;
+				height: 200px;
+				background: red;
+			}
+		</style>
+	</head>
+
+	<body>
+		<section id="app">
+			<img src="" v-bind:src="img" />
+			<input type="" name="" id="" value="" v-model="img" />
+			<p v-bind:class="{ ss }">dasfhasjdhfaskdfasdfasdf</p>
+			<p :class="{ ss : isss}">asdfhaj</p>
+			<input type="checkbox" v-model="isss"/>
+		</section>
+
+		<script type="text/javascript">
+			var img = "images/02.jpg";
+			var isss= true;
+			new Vue({
+				el: "#app",
+				data: {
+					img,
+					ss :true,
+					isss
+				}
+			})
+		</script>
+	</body>
+
+</html>
