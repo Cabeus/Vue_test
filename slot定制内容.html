@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="app">
+			
+			<left-content :list= "listCity">
+				
+				<div slot = "s1">
+					<h3>我是定制的标题</h3>
+					<p>我是定制的正文</p>
+				</div>
+				
+				<div slot = "ss2">
+					<a href="#">这是我定制的a</a>
+					
+				</div>
+				
+			</left-content>
+
+		</div>
+		
+		
+		
+		<script src="vue.js"></script>
+		<script>
+		
+			//全局定义
+			Vue.component("leftContent",{
+				data(){
+					return {
+						dropDown:false
+					};
+				},
+				props:['list'],
+				template: `<div>
+				
+					<slot name = "s1">
+						<input type="checkbox" v-model="dropDown" />勾选显示下拉
+						<ul v-show="dropDown" >
+							<li v-for = "v in list">{{v}}</li>	
+						</ul>
+					</slot>
+					
+					<slot name = "ss2">
+					<button>确定</button><button>取消</button>
+					</slot>
+					
+				</div>`
+			});
+
+	
+			var  vm = new Vue({
+				el: "#app",
+				data:{
+					listCity:['北京','上海','广州']
+				}
+			});
+		
+		</script>
+	</body>
+</html>

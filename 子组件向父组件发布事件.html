@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="app">
+			
+			<left-content @rrr = "jiankongdianji" ></left-content>
+
+		</div>
+		
+		
+		
+	<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+		
+			//全局定义
+			Vue.component("leftContent",{
+				data(){
+					return {
+						dropDown:false
+					};
+				},
+				props:[{
+					list:{
+						type:Array,
+						default() {
+					        return ["北京","上海"];
+					    }
+					},
+					title:{
+						type: String,
+						default: "标题"
+					}
+					
+				}],
+				template: `<div>
+				{{title}}
+					<input type="checkbox" v-model="dropDown" />勾选显示下拉
+					<ul v-show="dropDown" >
+						<li v-for = "v in list" @click = "clickHandler(v)">{{v}}</li>	
+					</ul>
+				</div>`,
+				methods:{
+					clickHandler(v){
+						this.list = ["aaa","bbb"];
+					}
+				}
+			});
+
+	
+			var  vm = new Vue({
+				el: "#app",
+				data:{
+					listCity:[]
+				},
+				methods:{
+					jiankongdianji(v){
+						console.log("我接受到了子组件的一个事件，叫rrr： 值是"+v);	
+					}
+				}
+			});
+		
+		</script>
+	</body>
+</html>

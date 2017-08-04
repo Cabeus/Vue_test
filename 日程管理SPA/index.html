@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			
+		</title>
+		
+		<style>
+			ul{
+				margin: 10px;
+			}
+			ul li{clear:both;}
+			input{float:left; }
+			.completed{text-decoration: line-through; color:#ccc;}
+			.editing{display: none;}
+			.editingli .editing{display: block;}
+			.editingli .info{
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="main">
+		
+			<h3>添加任务：{{visibility}}</h3>
+			<a href="#all" >所有</a>
+			<a href="#unfinised">未完成</a>
+			<a href="#finished">已经完成</a>
+			
+			<p>{{noCompletedNum}}个任务未完成</p>
+			<input type="text" @keyup.enter = "newTask" v-model="newTaskName"/>
+
+			<ul>
+				<li v-for = "v in filterList" :class = "{editingli: editingItem === v }">
+					<div class = "info">
+						<input type="checkbox"  v-model="v.isCompleted" />
+						<span @dblclick="editTask(v)"  :class = "{completed: v.isCompleted}">{{v.taskName}}</span>
+						<button @click = "deleteTask(v)">删除任务</button>
+					</div>
+					<input type="text" class = "editing" v-model="v.taskName" @keyup.enter = "editOk" @blur = "editOk" @keyup.esc = "cancelEdit(v)"/>
+				</li>
+			</ul>
+			<p v-if = "!taskList.length">无任何任务</p>
+		</div>
+		<script src="../vue.js"></script>
+		<script src="app.js"></script>
+	</body>
+</html>

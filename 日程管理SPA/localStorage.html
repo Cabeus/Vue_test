@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			
+			var obj = {
+				taskName: "学习Vue"
+			};
+			
+			localStorage.setItem("taskInfo", JSON.stringify(obj));
+			
+			
+			var getObj = JSON.parse(localStorage.getItem("taskInfo"));
+			
+			var taskName = getObj.taskName;
+			console.log(taskName);
+		</script>
+	</body>
+</html>

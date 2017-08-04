@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+	</head>
+	<body>
+		
+		<div id="app" >
+			<p>热门商品</p>
+			
+			
+			<ul>
+				<li v-for = "v in hots" >
+					商品名称： {{v.name}} -- 商品数量：  {{v.number}} -- 商品价格： {{v.price}}
+				</li>
+			</ul>
+			
+		</div>
+		<script src = "vue.js"></script>
+		<script type="text/javascript">
+			
+			var demoData = {
+				listInfo:[
+					{
+						name: "袜子",
+						number: "5",
+						price: "¥5.0",
+						hot: true
+					},{
+						name: "帽子",
+						number: "2",
+						price: "¥30.0",
+						hot: true
+					},{
+						name: "裤子",
+						number: "1",
+						price: "¥500.0",
+						hot: false
+					},{
+						name: "衣服",
+						number: "1",
+						price: "¥500.0",
+						hot: false
+					},{
+						name: "鞋子",
+						number: "1",
+						price: "¥500.0",
+						hot: true
+					}
+				]
+			};
+			
+			var vm = new Vue({
+				el: "#app",
+				data:demoData,
+				computed: {
+					hots(){
+						
+						var arr = this.listInfo.filter(function(v){
+							return v.hot == true; 
+						});
+						return arr;
+					}
+				}
+			});
+		</script>
+	</body>
+</html>
