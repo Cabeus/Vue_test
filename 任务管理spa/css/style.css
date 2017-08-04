@@ -29,6 +29,12 @@ body {
   height: 40px;
   line-height: 40px;
 }
+.view > #app > div > div {
+  float: right;
+}
+.view > #app > div > div > a {
+  margin-right: 20px;
+}
 .view > #app > div > span {
   float: left;
   color: #d9534f;

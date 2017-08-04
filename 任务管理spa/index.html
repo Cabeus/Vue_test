@@ -13,16 +13,16 @@
 				<h2>添加任务</h2>
 				<input type="" v-on:keyup.enter="tianjia" v-model="newname" />
 				<div>
-					<span >{{}}个任务未完成</span>
+					<span>{{sum}}个任务未完成</span>
 					<div>
-						<a href="all">所有任务</a>
-						<a href="no">未完成任务</a>
-						<a href="ok">完成的任务</a>
+						<a href="#all">所有任务</a>
+						<a href="#no">未完成任务</a>
+						<a href="#ok">完成的任务</a>
 					</div>
 				</div>
 				<h2>任务列表</h2>
 				<ul>
-					<li v-for="v in list" v-bind:class="{show:edit === v}">
+					<li v-for="v in filterList" v-bind:class="{show:edit === v}">
 						<div  class="nodisplay">
 							<input type="checkbox" v-model="v.del" />
 							<span v-bind:class="{ del : v.del}" v-on:dblclick="xiugai(v)">{{v.name}}</span>
@@ -31,6 +31,7 @@
 						<input type="" class="display" v-model="v.name" @keyup.enter="quding" @blur="quding" @keyup.esc = "quxiao(v)"/>
 					</li>
 				</ul>
+				<p v-if="!list.length">没有任务~</p>
 
 			</section>
 		</div>
