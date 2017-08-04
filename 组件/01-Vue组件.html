@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<section id="app">
+			<left></left>
+			<right></right>
+		</section>
+		<section id="abb">
+			<left></left>
+		</section>
+
+		<script src="js/lib/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//全局的
+			Vue.component("left", {
+				template: `
+				<div>
+				<p>这是一个全局</p>
+				<button>这是一个全局按钮</button>
+			</div>
+			`
+
+			})
+
+			new Vue({
+				el: "#app",
+				components: {
+					right: {
+						template: `
+									<div>
+										<p>这是一个局部标题</p>
+										<button>这是一个局部按钮</button>
+									</div>
+									`
+					}
+				}
+			})
+			new Vue({
+				el: "#abb"
+			})
+		</script>
+	</body>
+
+</html>

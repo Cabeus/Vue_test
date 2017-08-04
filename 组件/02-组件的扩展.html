@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<section id="app">
+
+			<left></left>
+
+		</section>
+
+		<script src="js/lib/vue.js"></script>
+		<script type="text/javascript">
+			var data = {
+				sss:"hello"
+			}
+			Vue.component("left", {
+				template: '<span>{{ sss }}</span>',
+				data: function() {
+					return data
+				}
+			})
+
+			new Vue({
+				el: "#app"
+			})
+		</script>
+	</body>
+
+</html>

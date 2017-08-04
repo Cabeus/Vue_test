@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="app">
+			<c1 v-bind:list = "listCity"></c1>
+		</div>
+
+		<script src="../js/lib/vue.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="text/javascript">
+			Vue.component("c1",{
+				data(){
+					return {
+						d:false
+					}
+				},
+				props:["list"],
+				template:`
+					<div>
+						<input type="checkbox" v-model="d"/>
+						<ul v-show="d">
+							<li v-for="v in list"  v-on:click="dianji">{{v}}</li>
+						</ul>
+					</div>
+				`
+			})
+			
+			new Vue({
+				el:"#app",
+				data:{
+					listCity:["a","b","c"]
+				},
+				methods:{
+					dianji(){
+					
+						console.log("diani jkdsfhjklsadhfjkash")
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

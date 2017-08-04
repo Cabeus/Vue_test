@@ -1,17 +1,43 @@
+var store = {
+	setStore(key, value) {
+		localStorage.setItem(key, JSON.stringify(value));
+	},
+	getStore(key) {
+		return JSON.parse(localStorage.getItem(key)) || [];
+	}
+};
+
+var list = store.getStore("list");
+
+//store.setStore("taskList", [{
+//		taskName: "学习Vue",
+//		fini: false
+//	},
+//	{
+//		taskName: "学习Angular",
+//		fini: false
+//	},
+//	{
+//		taskName: "学习JQ",
+//		fini: false
+//	}
+//])
+
 var Data = {
 	newname: "",
 	edit: "",
 	vi: "",
 	oldname: "",
-	list: [{
-			name: "asdfasd",
-			del: false
-		},
-		{
-			name: "gggsd",
-			del: false
-		}
-	]
+	list
+	//	[{
+	//			name: "asdfasd",
+	//			del: false
+	//		},
+	//		{
+	//			name: "gggsd",
+	//			del: false
+	//		}
+	//	]
 };
 
 var vm = new Vue({
@@ -19,7 +45,7 @@ var vm = new Vue({
 	data: Data,
 	methods: {
 		tianjia() {
-			this.list.push({
+			this.list.unshift({
 				name: this.newname,
 				del: false
 			})
@@ -56,12 +82,12 @@ var vm = new Vue({
 					return this.list;
 					break;
 				case "no":
-					return this.list.filter(function(v){
+					return this.list.filter(function(v) {
 						return v.del == false;
 					})
 					break;
 				case "ok":
-					return this.list.filter(function(v){
+					return this.list.filter(function(v) {
 						return v.del == true;
 					})
 					break;
@@ -70,6 +96,14 @@ var vm = new Vue({
 					break;
 
 			}
+		}
+	},
+	watch: {
+		list: {
+			handler: function(v, o) {
+				store.setStore("list",this.list)
+			},
+			deep: true
 		}
 	}
 })
