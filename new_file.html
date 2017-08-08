@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+
+		</style>
+	</head>
+
+	<body>
+
+		<div id="app">
+			<!--<span>需求创建时间{{createtime | time}}</span>-->
+			<p>{{message}}</p>
+				<br>
+			<textarea v-model="message" placeholder="add multiple lines"></textarea>
+		</div>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+//			// vue 过滤器
+//			Vue.filter('time', function(value) {
+//				return new Date(parseInt(value) * 1000).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ");
+//			})
+//			//创建vue实例
+			new Vue({
+				el: '#app'
+//				data: function() {
+//					return {
+//						//需要转化的时间戳
+//						createtime: 1466248396
+//					}
+//				}
+			})
+
+
+
+
+
+
+
+
+
+
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<style type="text/css">
+			.model{
+				width: 350px;
+				background: #ccc;
+			}
+			.model-header{
+				text-align: center;
+				color: red;
+				line-height: 40px;
+			}
+			.model-content{
+				text-align: center;
+			}
+			.model-footer{
+				text-align: center;
+			}
+		</style>
+		
+	</head>
+
+	<body>
+
+		<div id="app">
+			<zujian></zujian>
+			
+			<br />
+			<zujian>
+				<div slot="title">111111</div>
+				<div slot="centent">222222</div>
+				<div slot="footer">323333</div>
+			</zujian>
+			
+			<br />
+			<zujian  @okson="okF" @noson="noF">
+				<div slot="title">这是设置的标题</div>
+				<div slot="centent">
+					<ul>
+						<li>0001</li>
+						<li>0002</li>
+						<li>0003</li>
+						<li>0004</li>
+						<li>0005</li>
+					</ul>
+				</div>
+			</zujian>
+			<br />
+			<br />
+			<zujian  @okson="okF" @noson="noF">
+				<div slot="title">这是设置的标题222</div>
+				<div slot="centent">
+					<ul>
+						<li v-for="v in list">{{v}}</li>
+					</ul>
+				</div>
+			</zujian>
+			
+		</div>
+		
+
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//定制组件
+			Vue.component("zujian", {
+				template: `//组件的内容
+					<div class="model">
+						<div class="model-header">
+							<slot name ="title">
+								这个是定制组件的标题
+							</slot>
+						</div>
+						<div class="model-content">
+							<slot name ="centent">
+								这个是定制组件的内容
+							</slot>
+						</div>
+						<div class="model-footer">
+							<slot name = "footer">
+								<button @click="no">取消</button>
+								<button @click="ok">确定</button>
+							</slot>
+						</div>
+					</div>
+				`,
+				methods:{//组件使用的方法---发送给父级
+					ok(){
+						this.$emit("okson")
+					},
+					no(){
+						this.$emit("noson")
+					}
+				}
+			})
+
+			var vm = new Vue({
+				el: "#app",
+				data:{
+					list:[1,2,3,4,5,6]//数据
+				},
+				methods:{//方法
+					okF(){
+						alert("ok")
+					},
+					noF(){
+						alert("no")
+					}
+				}
+
+			})
+		</script>
+	</body>
+
+</html>

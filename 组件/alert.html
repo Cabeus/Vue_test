@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.alert {
+				width: 200px;
+				line-height: 50px;
+				text-align: center;
+				border: 1px solid #000000;
+				border-radius: 5px;
+				margin: 5px;
+				position: relative;
+			}
+			
+			.alert-red {
+				background: red;
+			}
+			
+			.alert-yellow {
+				background: yellow;
+			}
+			
+			.alert-blue {
+				background: blue;
+			}
+			
+			.alert-pink {
+				background: pink;
+			}
+			
+			.icon {
+				width: 60px;
+				height: 30px;
+				line-height: 30px;
+				background: #000;
+				color: #fff;
+				float: left;
+				margin: 10px;
+			}
+			
+			.icon-red:after {
+				content: "red";
+			}
+			
+			.icon-yellow:after {
+				content: "yellow";
+			}
+			
+			.icon-blue:after {
+				content: "blue";
+			}
+			
+			.icon-pink:after {
+				content: "pink";
+			}
+			
+			.x {
+				position: absolute;
+				line-height: 10px;
+				width: 10px;
+				height: 10px;
+				right: 10px;
+				top: 10px;
+				border: 1px solid #000;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div id="app">
+			<alert></alert>
+			<alert title="红色" type="red" :showicon="false">
+				<div slot = "content">aksdjflkasjdflk</div>
+			</alert>
+			<alert title="黄色" type="yellow"  :showx= "false"></alert>
+			<alert title="蓝色" type="blue" :showicon="false"></alert>
+			<alert title="粉色" type="pink"></alert>
+			
+
+		</div>
+
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			
+			//组件
+			Vue.component("alert", {
+				//组件初始数据
+				data() {
+					return {
+						guanbikey: true
+					}
+				},
+				template: `//组价内容
+					<div class="alert" :class= "[typeclass]" v-if = "guanbikey">
+						<i class="icon" :class= "[iconclass]" v-show = "showicon"></i>
+						<div class="content">{{title}}</div>
+						<slot name = "content"></slot>
+						<span class="x" @click= "guanbi"  v-show = "showx">x</span>
+					</div>
+				`,
+				props: {   //传递数据 
+					title: {
+						type: String,
+						default: "提示框"
+					},
+					type: {
+						type: String,
+						default: "info"
+					},
+					showicon: {
+						type: Boolean,
+						default: true
+					},
+					showx: {
+						type: Boolean,
+						default: true
+					}
+				},
+				computed: {//组价中设置的方法
+					typeclass() {
+						return `alert-${this.type}`;
+					},
+					iconclass() {
+						return `icon-${this.type}`;
+					}
+				},
+				methods: {  //组件中设置大触发事件
+					guanbi() {
+						this.guanbikey = false
+					}
+				}
+			})
+
+			var vm = new Vue({
+				el: "#app"
+			})
+		</script>
+	</body>
+
+</html>
