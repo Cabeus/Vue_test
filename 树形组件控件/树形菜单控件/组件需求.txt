@@ -1,0 +1,21 @@
+传入的数据结构：
+[
+	{
+		title:XXX,
+		children:[
+			{
+			title:XXXX,
+			chidren:[]
+			}
+		]
+	}
+]
+
+设置的props：
+data 数据结构 默认为 []
+
+定制模板:
+不可定制
+
+监控状态变化：
+事件名on-select-change 点击树节点触发

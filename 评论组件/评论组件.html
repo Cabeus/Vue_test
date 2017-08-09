@@ -90,8 +90,9 @@
 	</head>
 
 	<body>
-
+		
 		<div id="app">
+			<span>需求创建时间{{timestamp | time}}</span>
 			<tree :list="treeData"></tree>
 		</div>
 
@@ -156,7 +157,7 @@
 				}, {
 					name: "第一层姓名",
 					pl: "这是评论",
-           			like: 18,
+					like: 18,
 					dislike: 5,
 					son: []
 				}]
@@ -174,7 +175,7 @@
 					return {
 						show: false,
 						user,
-						pltext : ""
+						pltext: ""
 
 					}
 
@@ -222,23 +223,38 @@
 						console.log(user);
 						var time1 = getNowFormatDate();
 						console.log(time1);
-						console.log(this.pltext)
+						console.log(this.pltext);
+						console.log()
 					}
 				}
 
+			})
+			
+			
+			
+			//获取当前时间戳
+			var timestamp=new Date() /1000;
+			// vue 过滤器
+			//过滤时间
+			Vue.filter('time', function(value) {
+				return new Date(parseInt(value) * 1000).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ");
 			})
 
 			var vm = new Vue({
 				el: "#app",
 				data: {
-					treeData
-
+					treeData,
+					timestamp
 				}
 			})
-
-
-
-			//获取当前时间
+			
+			
+			
+			
+			
+			
+		
+			//获取当前时间---格式 2017-08-08 14:56:55
 			function getNowFormatDate() {
 				var date = new Date();
 				var seperator1 = "-";
@@ -254,10 +270,9 @@
 				var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate +
 					" " + date.getHours() + seperator2 + date.getMinutes() +
 					seperator2 + date.getSeconds();
-//				console.log(currentdate)
+				//				console.log(currentdate)
 				return currentdate;
 			}
-			
 		</script>
 
 	</body>

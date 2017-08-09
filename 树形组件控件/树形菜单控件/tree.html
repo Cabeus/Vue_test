@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="tree.css"/>
+	</head>
+	<body>
+		<div id="app">
+			<tree :data = "list"></tree>
+		</div>	
+		
+		
+		<script src="../../vue.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			Vue.component("tree-list",{
+				
+				props:{
+					data:{
+						type:Array,
+						default:[]
+					},
+					incrementCount:{
+						type: Number,
+						default: 0
+					}
+				},
+				template:`
+				<ul v-if="data">
+					<li v-for="item2 in data">
+						<div class="tree-title" :style="[stylePadding]">
+							<span>{{incrementCount}}<strong>{{item2.title}}</strong> <i class="ico"></i></span>
+						</div>
+						<tree-list :increment-count = "count"  v-if = "item2.children" :data  = "item2.children"></tree-list>
+					</li>
+				</ul>
+				`,
+				computed:{
+					count(){
+						var c = this.incrementCount;
+						return ++c; 
+					},
+					stylePadding(){
+						return {
+							'padding-left': this.count*30 + 'px'
+						}
+					}
+				},
+			});
+			
+			Vue.component("tree", {
+				props:{
+					data:{
+						type:Array,
+						default:[]
+					},
+					incrementCount:{
+						type: Number,
+						default: 0
+					}
+				},
+				template:`
+				<div class="tree-menu-comm tree-menu">
+					<ul>
+						<li v-for = "item in data">
+							<div class="tree-title" style="padding-left: 16px;">
+								<span><strong>{{item.title}}</strong> <i class="ico"></i></span>
+							</div>
+							<tree-list  :data = "item.children"></tree-list>
+						</li>
+					</ul>
+				</div>
+				`,
+			});
+			var treeData = [{
+		        title: "目录",
+		        children: [{
+		            title: "我的音乐",
+		            children: [{
+		                title: "周杰伦",
+		                children: [{
+		                    title: "发如雪"
+		                }]
+		            }, {
+		                title: "王杰",
+		                children: [{
+		                    title: "一场游戏一场梦"
+		                }]
+		            }]
+		        }, {
+		            title: "我的照片"
+		        }]
+		    }];
+		    
+		    
+			new Vue({
+				el: "#app",
+				data:{
+					list: treeData
+				}
+			});
+		</script>
+	</body>
+</html>
